@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+    <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <title>Car Calculator</title>
+    <base target="_top">
+    </head>
+    <script>
+        var max = 0
+        var min = 0
+        var wpercent = 0
+        function mathfunctionyes(){
+            var max = parseFloat(document.getElementById("max_value").value); 
+            console.log(max)
+            var min = parseFloat(document.getElementById("min_value").value);
+            console.log(min)
+            var wpercent = parseFloat(document.getElementById("widthpercent").value);
+            console.log(wpercent)
+            var percentage = wpercent / 100
+            console.log(percentage)
+            var maths = (max - min) * percentage + min
+            maths = +maths.toFixed(3)
+            var checkedbox = document.getElementById("yesSame").value;
+            console.log(checkedbox)
+            if (document.getElementById("yesSame").checked == true){
+                var secondmaths = (max - min) * (1-percentage) + min
+                var span = document.getElementById("changeValue");
+                var txt = document.createTextNode(" ");
+                var txt2 = document.createTextNode(secondmaths);
+                span.innerHTML = maths;
+                span.appendChild(txt)
+                span.appendChild(txt2)
+            } else{
+                var span = document.getElementById("changeValue");
+                var txt = document.createTextNode(maths);
+                span.innerHTML = maths;
+            }
+            //console.log(maths)
+            
+        }
+            
+    </script>
+    <div class="container">
+        <div class="title">Car Calculator</div>
+        <div class="details">
+            <p>The Equation: (MAX - MIN) * W% + MIN</p>
+        </div>
+        <div class="details">
+            <p>NOTE: DO <b>NOT</b> INPUT THE % AS PART OF YOUR ANSWER</p>
+        </div>
+        <div class="details">
+            <div class="input">
+                <span class="details">MAX</span>
+                <input type="text" id="max_value" placeholder="Enter MAX"/>
+            </div>
+            <div class="input">
+                <span class="details">MIN</span>
+                <input type="text" id="min_value" placeholder="Enter MIN"/>
+            </div>
+            <div class="input">
+                <span class="details">W%</span>
+                <input type="text" id="widthpercent" placeholder="Enter W%"/>
+            </div>
+            <div class="input">
+                <span class="details" id="changeValue">Your Calculation Will Appear Here....</span>
+            </div>
+            <div class="details">
+                <input type="checkbox" class="details" id="yesSame" name="yesSame" style="margin-right: 15px;">
+                <label for="yesSame" class="details">Are the two the same?</label>
+            </div>
+            <p>
+                If the equation is the same, it will run an extra equation <b>(MAX - MIN) * (100-W%) + MIN</b> and then give you an extra number 
+            </p>
+            <div class="button_input">
+                <input type="button" value="Calculate" onclick="mathfunctionyes()"/>
+            </div>
+            
+        </div>
+    </div>
+    
+
+
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #151618, #050405);
+            min-height: 100vh;
+        }    
+        .container{
+            max-width: 700px;
+            width: 100%;
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+        }
+        .container .title{
+            font-size: 25px;
+            font-weight: 500;
+            text-decoration: underline #630b0b;
+        }
+        .container .details{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 15px 0 12px 0;
+        }
+        .container .input{
+            width: calc(100% / 2 - 20px);
+        }
+        .details .input input{
+            width: 100%;
+            height: 45px;
+            outline: none;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding-left: 15px;
+            font-size: 16px;
+        }
+        .container .input .details{
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        .container .details .button_input{
+            height: 45px;
+            margin: 45px 0;
+            width: 100%;
+        }
+        .container .button_input input{
+            display: block;
+            height: 100%;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            background: linear-gradient(135deg, #62656b, #050405);
+        }
+        .button_input input:hover{
+            background: linear-gradient(135deg, #333438, #000000);
+        }
+        .button_input:active{
+            box-shadow: 10px 9px 1px 2px rgb(217, 210, 221);
+            border-radius: 5px;
+        }
+        input[type='checkbox']{
+            width:20px;
+            height:20px;
+        }
+
+    </style>
+
